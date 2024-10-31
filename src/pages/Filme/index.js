@@ -2,6 +2,7 @@ import "./filme-info.css";
 
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import api from "../../services/api";
 
@@ -47,12 +48,12 @@ function Filme() {
     );
 
     if (hasFilme) {
-      return alert("ESSE FILME JÁ ESTÁ NA LISTA");
+      return toast.warn("ESSE FILME JÁ ESTÁ NA LISTA");
     }
 
     filmesSalvos.push(filme);
     localStorage.setItem("@primeflix", JSON.stringify(filmesSalvos));
-    alert("FILME SALVO COM SUCESSO");
+    toast.success("FILME SALVO COM SUCESSO");
   }
 
   if (loading) {
